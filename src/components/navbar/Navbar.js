@@ -5,7 +5,7 @@ import { mergeClasses } from '@material-ui/styles';
 import useStyles from './styles';
 import Logo from '../../assets/store.png';
 
-const Navbar=()=>{
+const Navbar=({items})=>{
     const classes=useStyles();
     return(
         <div>
@@ -18,7 +18,7 @@ const Navbar=()=>{
                     <div className={classes.grow}/>
                     <div>
                         <IconButton aria-label='show cart items' color='inherit'>
-                            <Badge badgeContent={2} color='secondary'>
+                            <Badge badgeContent={items} color='secondary'>
                                 <ShoppingCart/>
                             </Badge>
                         </IconButton>
