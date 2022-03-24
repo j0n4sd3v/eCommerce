@@ -14,29 +14,25 @@ const App=()=>{
         }
         catch(e){}
     }
-    const fetchCart=async()=>{
-        try{    
-            setCart(await commerce.cart.retrieve());
-        }
-        catch(e){}
+    const fetchCart=async()=>{      
+        const carData=await commerce.cart.retrieve();
+        setCart(carData);
     }
     const handleAddToCart= async (productId,quantity)=>{
         const item=await commerce.cart.add(productId,quantity);
         setCart(item.cart);
     }
+   
     useEffect(()=>{
+        fetchCart();
         fetchProducts();
-        fetchCart()
     },[]);
-    console.log(cart);
     return (
-        
         <div>
           <Navbar items={cart.total_items}/>  
-          {/*<Products products={products} onAddToCart={handleAddToCart}/>*/}
+         {/*<Products products={products} onAddToCart={handleAddToCart}/>*/}
           <Cart cart={cart}/>
         </div>
-    
     )
 }
 export default App;
