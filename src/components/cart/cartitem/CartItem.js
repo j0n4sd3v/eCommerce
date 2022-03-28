@@ -5,12 +5,13 @@ import useStyle from './styles';
 
 const CartItem=({item})=>{
     const classes=useStyle();
+    console.log(item);
     return(
-        <Card>
-            <CardMedia image={item.media.source} alt='item' className={classes.media}/>
+        <Card className={classes.card} >
+            <CardMedia  image={item.image.url} alt='item' className={classes.media}/>
             <CardContent className={classes.cardContent}>
-                <Typography variant="h4">{item.name}</Typography>
-                <Typography variant="h5">{item.line_total.formatted_with_symbol}</Typography>
+                <Typography variant="h7">{item.name}</Typography>
+                <Typography variant="h7">{item.line_total.formatted_with_symbol}</Typography>
             </CardContent>
             <CardActions className={classes.cartActions}>
                 <div className={classes.buttons} >
@@ -18,6 +19,7 @@ const CartItem=({item})=>{
                   <Typography>{item.quantity}</Typography>
                   <Button type="button" size="small">+</Button>  
                 </div>
+                <Button variant="contained" type="button" color="secondary" size="small">Remove</Button>  
             </CardActions>
         </Card>
     )
