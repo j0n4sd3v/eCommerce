@@ -10,13 +10,13 @@ const CartItem=({item})=>{
         <Card className={classes.card} >
             <CardMedia  image={item.image.url} alt='item' className={classes.media}/>
             <CardContent className={classes.cardContent}>
-                <Typography variant="h7">{item.name}</Typography>
-                <Typography variant="h7">{item.line_total.formatted_with_symbol}</Typography>
+                <Typography variant="h6">{item.name}</Typography>
+                <Typography variant="h6">{item.line_total.formatted_with_symbol}</Typography>
             </CardContent>
             <CardActions className={classes.cartActions}>
                 <div className={classes.buttons} >
                   <Button type="button" size="small">-</Button>
-                  <Typography>{item.quantity}</Typography>
+                  <Typography variant="body1">{item.quantity}</Typography>
                   <Button type="button" size="small">+</Button>  
                 </div>
                 <Button variant="contained" type="button" color="secondary" size="small">Remove</Button>  
