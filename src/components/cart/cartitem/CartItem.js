@@ -3,9 +3,9 @@ import {Typography, Button, Card, CardActionArea, CardContent, CardMedia, CardAc
 
 import useStyle from './styles';
 
-const CartItem=({item})=>{
+const CartItem=({item, onUpdateCartQty, onRemoveFromCart})=>{
     const classes=useStyle();
-    console.log(item);
+    
     return(
         <Card className={classes.card} >
             <CardMedia  image={item.image.url} alt='item' className={classes.media}/>
@@ -15,11 +15,11 @@ const CartItem=({item})=>{
             </CardContent>
             <CardActions className={classes.cartActions}>
                 <div className={classes.buttons} >
-                  <Button type="button" size="small">-</Button>
+                  <Button type="button" size="small" onClick={()=>onUpdateCartQty(item.id,item.quantity-1)}>-</Button>
                   <Typography variant="body1">{item.quantity}</Typography>
-                  <Button type="button" size="small">+</Button>  
+                  <Button type="button" size="small" onClick={()=>onUpdateCartQty(item.id,item.quantity+1)}>+</Button>  
                 </div>
-                <Button variant="contained" type="button" color="secondary" size="small">Remove</Button>  
+                <Button variant="contained" type="button" color="secondary" size="small"onClick={()=>onRemoveFromCart(item.id)}>Remove</Button>  
             </CardActions>
         </Card>
     )
