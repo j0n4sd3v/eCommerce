@@ -12,7 +12,7 @@ const Cart=({cart,handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart})=>
     const EmptyCart=()=>(
         <>
             <Typography variant="subtitle1">You have no items in your shopping cart, start adding some! </Typography>
-            <Typography component={Link} to='/' variant="subtitle1"> </Typography>
+            <Typography component={Link} to='/' variant="subtitle1" className={classes.link}>Click to Add </Typography>
         </>
 
     )
@@ -32,12 +32,15 @@ const Cart=({cart,handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart})=>
             </Grid>
         </>
     )
-    if(typeof cart.line_items==='undefined')return 'loading..';
+    if(typeof cart.line_items==='undefined')return (
+        <div>Loading...</div>
+    )
+    else
     return(
         <Container>
             <div className={classes.toolbar} />
             <Typography className={classes.title} variant='h4' gutterBottom>Your shopping cart </Typography>
-            {cart.line_items.legth===0? <EmptyCart/>:<FilledCart/>}
+            { cart.total_items===0? <EmptyCart/>:<FilledCart/>}
             <div className={classes.cardDetails} >
                 <Typography variant="h4">Subtotal: {cart.subtotal.formatted_with_symbol} </Typography>
                 <div>
