@@ -13,6 +13,7 @@ const AddresForm=({checkoutToken})=>{
     const [shippingOption,setShippingOption]=useState('');
 
     const countries=Object.entries(shippingCountries).map(([code,name])=>({id:code,label:name}));
+    const subdivisions=Object.entries(shippingSubdivisions).map(([code,name])=>({id:code,label:name}));
     
     
     const fetchShippingCountries=async (checkoutTokenId)=>{
@@ -20,10 +21,20 @@ const AddresForm=({checkoutToken})=>{
         setShippingCountries(countries);
         setShippingCountry(Object.keys(countries)[0]);
     } 
+
+    const fetchSubDivision=async(countryCode)=>{
+        const {subdivisions}=await commerce.services.localeListSubdivisions(countryCode);
+        setShippingSubdivisions(subdivisions);
+        setShippingSubdivision(Object.keys(subdivisions)[0]);
+    }
+
     useEffect(()=>{
         fetchShippingCountries(checkoutToken.id);
-    },[])
+    })
 
+    useEffect(()=>{
+        if(shippingCountry)fetchSubDivision(shippingCountry);
+    },[shippingCountry])
 
     const methods=useForm();
 
