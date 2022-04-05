@@ -2,7 +2,7 @@ import React from "react";
 import {Container, Typography, Button, Grid} from '@material-ui/core';
 import useStyle from './styles';
 import CartItem from "./cartitem/CartItem";
-import {Link }from 'react-router-dom'
+import {Link }from 'react-router-dom';
 
 
 const Cart=({cart,handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart})=>{
