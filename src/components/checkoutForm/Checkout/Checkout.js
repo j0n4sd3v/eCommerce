@@ -43,7 +43,7 @@ const Checkout =({cart})=> {
     const Form=()=>(
         activeStep===0
         ?<AddresForm checkoutToken={token} next={next}/>
-        :<PaymentForm shippingData={shippingData}/>
+        :<PaymentForm shippingData={shippingData} checkoutToken={token} />
     )
     return(
         <>
