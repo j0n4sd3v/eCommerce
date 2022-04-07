@@ -5,7 +5,7 @@ import useStyle from './style';
 import AddresForm from '../AddresForm';
 import PaymentForm from '../PaymentForm';
 import {commerce} from '../../../lib/commerce';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const steps=['Shipping addres','Payment details'];
 
@@ -14,7 +14,7 @@ const Checkout =({cart,order,onCaptureCheckout,error})=> {
     const [activeStep,setActiveStep]=useState(0);
     const [token,setToken]=useState(null);
     const [shippingData,setShippingData]=useState({});
-    const history=useHistory();
+    const history=useNavigate();
 
     useEffect(()=>{
         const generateToken=async()=>{
